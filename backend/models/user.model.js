@@ -2,34 +2,35 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     fullname:{
-        type:String,
-        required:true
+        type: String,
+        required: true,
+        unique: true
     },
     email:{
-        type:String,
-        required:true,
-        unique:true
+        type: String,
+        required: true,
+        unique: true
     },
     phoneNumber:{
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     password:{
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     role:{
-        type:String,
+        type: String,
         enum:['student','recruiter'],
-        required:true
+        required: true
     },
     profile:{
-        bio:{type:String},
-        skills:{type:String},
-        resume:{type:String},  
-        resumeOriginalName:{type:String},
+        bio:{type: String},
+        skills:{type: String},
+        resume:{type: String},  
+        resumeOriginalName:{type: String},
         company: {
-            type:mongoose.schema.Types.ObjectId, ref:'Company'},   
+            type: mongoose.Schema.Types.ObjectId, ref:'Company'},   
             profilePhoto:{
                 type:String,
                 default:""
