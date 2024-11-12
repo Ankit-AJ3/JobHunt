@@ -32,7 +32,7 @@ export const applyJob = async (req, res) => {
         // Create a new application
         const newApplication = await Application.create({
             job: jobId,
-            applicant: userId, // Corrected field name
+            applicant: userId, 
         });
 
         job.applications.push(newApplication._id);
@@ -90,7 +90,7 @@ export const getApplicants = async (req, res) => {
         const jobId = req.params.id;
         const job = await Job.findById(jobId).populate({
             path: "applications",
-            options: { sort: { createdAt: -1 } }, // Corrected sort option
+            options: { sort: { createdAt: -1 } }, 
             populate: {
                 path: "applicant"
             }
@@ -98,7 +98,7 @@ export const getApplicants = async (req, res) => {
         if (!job) {
             return res.status(404).json({
                 message: "Job not found.",
-                success: false // Corrected typo
+                success: false 
             });
         }
         return res.status(200).json({
@@ -122,7 +122,7 @@ export const updateStatus = async (req, res) => {
         if (!status) {
             return res.status(400).json({
                 message: "Status is required.",
-                success: false // Corrected typo
+                success: false 
             });
         }
 
